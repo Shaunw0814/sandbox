@@ -1,0 +1,9 @@
+name: rake-task
+
+on:
+  schedule:
+    - cron: "0 9 * * 1-5"
+    
+jobs:
+  build:
+  
