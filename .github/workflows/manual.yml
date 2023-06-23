@@ -17,9 +17,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby-full
 
       - name: Install dependencies
         run: |
