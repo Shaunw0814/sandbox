@@ -23,8 +23,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          gem install bundler
-          bundle install
+          sudo gem install bundler
+          sudo bundle install
+
 
       - name: Run Rake task 
         run: rake ${{ github.event.inputs.task }}
