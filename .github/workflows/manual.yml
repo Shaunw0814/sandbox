@@ -10,9 +10,7 @@ on:
 
 jobs:
   run_rake_task:
-    runs-on:
-      - self-hosted
-      - linux
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
