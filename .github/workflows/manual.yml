@@ -1,18 +1,30 @@
-name: Manual workflow
+name: Manual workflow with Rake task
 
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Person to greet'
-        default: 'World'
+      task:
+        description: 'Rake task to run'
         required: true
         type: string
 
 jobs:
-  greet:
+  run_rake_task:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Send greeting
-        run: echo "Hello ${{ inputs.name }}"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Run Rake task 
+        run: rake ${{ github.event.inputs.task }}
